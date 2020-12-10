@@ -1,0 +1,37 @@
+<!doctype html>
+
+<style type="text/css">
+<!--
+ .tab { margin-left: 40px; }
+-->
+</style>
+
+<h2>Verify Transcription</h2>
+
+<p>
+<title>Play File</title>{% if wav %}
+  <b>File: </b>{{ wav }}{% else %}
+  <h3>No File Sent</h3>{% endif %}
+</p>
+
+<h5>Transcription from File: </h5>
+
+<p class="tab"> {{transcript}} </p>
+<audio controls autoplay>
+  <source src={{ wav }} type="audio/wav">
+  Your browser does not support the audio tag.
+</audio>
+<h5>Edit Transcription: </h5>
+<p class="tab">
+<form method="POST" enctype="multipart/form-data" action="/next_file">
+<textarea id="transcription" name="transcription" rows="1" cols="50">
+{{transcript}}</textarea>
+</p>
+<p>
+<button type="submit"> Keep This Transcription </button>
+ </p>
+</form>
+<p>
+(enable autoplay in browser settings if wav does not play automatically)
+</p>
+</p>
